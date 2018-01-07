@@ -1,0 +1,28 @@
+syntax = "proto3";
+
+service SentimentService {
+  rpc getAspects (SentimentRequest) returns (SentimentResponse) {}
+}
+
+message SentimentRequest {
+  string text = 1;
+}
+
+message SentimentResponse {
+  string text = 1;
+  repeated Sentence sentences = 2;
+}
+
+message Sentence {
+  string text = 1;
+  string tokenizedText = 2;
+  repeated Opinion opinions = 3;
+}
+
+message Opinion {
+  string target = 1;
+  string category = 2;
+  string polarity = 3;
+  int32 start = 4;
+  int32 end = 5;
+}

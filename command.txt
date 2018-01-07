@@ -1,0 +1,1 @@
+./sentiment_client.py sample.txt 12341 -a 10.218.112.25
