@@ -19,6 +19,14 @@ class GetHandler(BaseHTTPRequestHandler):
         self.wfile.write(message)
         return
 
+    def do_OPTIONS(self):
+        self.send_response(200, 'OK')
+        # self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Credentials', 'true')
+        self.send_header('Access-Control-Allow-Origin', 'http://localhost:8080')
+        self.send_header('Access-Control-Allow-Headers', 'X-CSRF-Token, Content-Type')
+        self.send_header('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT')
+
     def do_POST(self):
         ctype, pdict = cgi.parse_header(self.headers['content-type'])
         content_len = int(self.headers.getheader('content-length'))
@@ -70,12 +78,17 @@ class GetHandler(BaseHTTPRequestHandler):
         datas['sentences'] = sentence_list
         print datas
         json_data = json.dumps(datas)
+        print type(json_data)
         #json_data = '{"sentences": "test"}'
 
-        self.send_response(200)
+        self.send_response(200, 'OK')
+        # self.send_header('Content-type', 'application/json')
+        self.send_header('Access-Control-Allow-Credentials', 'true')
+        self.send_header('Access-Control-Allow-Origin', 'http://localhost:8080')
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         self.wfile.write(json_data)
+        print 
 
 if __name__ == '__main__':
     from BaseHTTPServer import HTTPServer
