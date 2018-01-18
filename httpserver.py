@@ -6,6 +6,15 @@ import grpc
 import sentiment_pb2
 import sentiment_pb2_grpc
 
+
+##
+
+import argparse
+import requests
+import json
+#import visdom
+import numpy as np
+
 logging.basicConfig(format='%(asctime)s : %(levelname)s : %(message)s', level=logging.INFO)
 
 
@@ -32,28 +41,25 @@ class GetHandler(BaseHTTPRequestHandler):
         content_len = int(self.headers.getheader('content-length'))
         post_body = self.rfile.read(content_len)
 
-        address = '10.218.112.25'
-        port = '12341'
+        # address = '10.218.112.25'
+        # port = '12341'
+
+        address = '10.217.129.136'
+        port = '12345'
+
+
+        # ZQ
         text = post_body
         # text = get_text(args.input)
         channel = grpc.insecure_channel('{}:{}'.format(address, port))
         stub = sentiment_pb2_grpc.SentimentServiceStub(channel)
         request = sentiment_pb2.SentimentRequest(text=text)
         response = stub.getAspects(request)
+        # print 'response'
+        # print response
         sentences = response.sentences
+        # print sentences
 
-        '''
-        for i, sentence in enumerate(sentences):
-            text = sentence.text
-            print format(text) #sentence
-
-            opinions = sentence.opinions #opinion
-            for opinion in opinions:
-                print ' target: {}' .format(opinion.target)
-                print ' category: {}' .format(opinion.category)
-                print ' polarity: {}' .format(opinion.polarity)
-                print '\n'
-        '''
         datas = {}
         sentence_list = []
 
@@ -76,10 +82,9 @@ class GetHandler(BaseHTTPRequestHandler):
             sentence_list.append(data)
 
         datas['sentences'] = sentence_list
-        print datas
+        
         json_data = json.dumps(datas)
-        print type(json_data)
-        #json_data = '{"sentences": "test"}'
+        print json_data
 
         self.send_response(200, 'OK')
         # self.send_header('Content-type', 'application/json')
@@ -88,7 +93,7 @@ class GetHandler(BaseHTTPRequestHandler):
         self.send_header('Content-type', 'application/json')
         self.end_headers()
         self.wfile.write(json_data)
-        print 
+        
 
 if __name__ == '__main__':
     from BaseHTTPServer import HTTPServer
