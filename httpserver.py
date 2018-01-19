@@ -41,11 +41,11 @@ class GetHandler(BaseHTTPRequestHandler):
         content_len = int(self.headers.getheader('content-length'))
         post_body = self.rfile.read(content_len)
 
-        # address = '10.218.112.25'
-        # port = '12341'
+        address = '10.218.112.25'
+        port = '12341'
 
-        address = '10.217.129.136'
-        port = '12345'
+        # address = '10.217.129.136'
+        # port = '12345'
 
 
         # ZQ

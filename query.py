@@ -34,35 +34,45 @@ class GetHandler(BaseHTTPRequestHandler):
         ctype, pdict = cgi.parse_header(self.headers['content-type'])
         content_len = int(self.headers.getheader('content-length'))
         post_body = self.rfile.read(content_len)
-
-        # address = '10.218.112.25'
-        # port = '12341'
         address = '10.218.112.25'
-        port = '4000' #'Holo DyMemNN'
         endpoint = "api/v1.0/predict"
-        
-        
-        text = {'sentence':post_body,'term':'food'}
-        # text = [{'sentence':post_body,'term':'food'},{'sentence':post_body,'term':'food'}]
 
-        print text
-        r = requests.post("http://{}:{}/{}".format(address,port,endpoint), json=text)
-        print json.loads(r.text)['prediction']
-        text['polarity'] = json.loads(r.text)['prediction']
+        sentence= post_body.split('.comment. ')[1]
+
+        #distinguish target or category
+        if post_body[0] == 't': #target
+        	target = post_body.split('target.')[1].split('.comment.')[0]
+        	port4000 = '4000'
+        	text = {'sentence':sentence,'term':target}
+        	r = requests.post("http://{}:{}/{}".format(address,port4000,endpoint), json=text)
+        	# print json.loads(r.text)['prediction']
+        	text['polarity'] = json.loads(r.text)['prediction']
+        	print text
+        	json_data = json.dumps(text)
+        else: #category
+        	category = post_body.split('category.')[1].split('.comment.')[0]
+        	print 'category'
+        	print category
+        	port5000 = '5000'
+        
+        
+        
+		
+        # port = '4000' #'Holo DyMemNN'
+        
+        
+        # text = {'sentence':sentence,'term':target}
+        # # text = [{'sentence':post_body,'term':'food'},{'sentence':post_body,'term':'food'}]
+
+        # # print text
+        # r = requests.post("http://{}:{}/{}".format(address,port,endpoint), json=text)
+        # # print json.loads(r.text)['prediction']
+        # text['polarity'] = json.loads(r.text)['prediction']
 
 		
 
-        
-
-
-
-
-
-
-
-
-        json_data = json.dumps(text)
-        print json_data
+        # json_data = json.dumps(text)
+        # print json_data
 
         self.send_response(200, 'OK')
         # self.send_header('Content-type', 'application/json')

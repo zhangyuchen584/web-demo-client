@@ -1,3 +1,33 @@
+python query_original.py --dataset Restaurants --mode term --query "The food is normal" --term "food" --port 4000
+
+
+
+
+
+
+
+            // console.log(text[item].target)
+            // console.log(text[item].comment)
+
+            console.log(Object.keys(text[item])[0])
+            TarComPair = Object.keys(text[item])[0]+'.'+ text[item].target + '.comment. ' + text[item].comment
+            console.log(TarComPair)
+            
+            // console.log($scope.UniqueTargetList[item].target)
+            // console.log($scope.UniqueTargetList[item].comment)
+
+            // console.log($scope.UniqueTargetList[item].comment)
+            $http.post(destinationURL, {target: "suscipit", comment: "Facilisi facilisi nonummy lacus donec, dictumst pe…um et ornare massa per hac quis dis pellentesque."}, config).then($scope.test, $scope.errorOutput);
+            // $http.post(destinationURL, {target:$scope.UniqueTargetList[item].comment,comment:12}, config).then($scope.test, $scope.errorOutput);
+            // $http.post(destinationURL, {target:TarComPair}, config).then($scope.test, $scope.errorOutput);
+            // $http.post(destinationURL, 'hgfhgj', config).then($scope.test, $scope.errorOutput);
+            // $http.post(destinationURL, text[item], config).then($scope.test, $scope.errorOutput);
+        
+
+
+
+
+
 Facilisi facilisi nonummy lacus donec, dictumst pellentesque auctor mauris suscipit Ac cum et ornare massa per hac quis dis pellentesque. Hendrerit donec accumsan enim ad felis Scelerisque sit, class facilisi sociosqu cubilia risus ornare est montes mattis. Eget vitae nibh, aenean. Proin imperdiet hac aenean. Praesent tristique ac. Purus nam suspendisse consectetuer nunc habitasse habitasse, quis luctus aptent viverra. Conubia penatibus. Fringilla. Consectetuer viverra class. Faucibus dictumst imperdiet non nisi fringilla. Nisl etiam tempus sed gravida parturient ad. Malesuada cubilia praesent mus vel sociis phasellus natoque duis adipiscing mauris dignissim ultrices mauris vehicula nostra facilisis euismod fames sed mauris donec. Tellus scelerisque. Est nulla fusce est massa varius cubilia nullam varius eu nullam mus, justo sodales metus ipsum praesent odio. Odio quam scelerisque feugiat consequat ligula.
 
 Vitae posuere nisl lorem phasellus augue. Nam ac senectus sed habitasse platea scelerisque, mus elit, porttitor. Leo. Curabitur odio Venenatis lacinia mattis sollicitudin habitasse tortor lacus laoreet diam aenean libero est. Curae;. Pretium. Pellentesque sociis ultrices vehicula. Porttitor sociosqu fringilla sem vitae. Sed pharetra commodo torquent posuere orci. Massa porttitor vulputate convallis nunc dictum. Vivamus.
