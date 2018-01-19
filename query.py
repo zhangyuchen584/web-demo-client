@@ -54,23 +54,21 @@ class GetHandler(BaseHTTPRequestHandler):
         	print 'category'
         	print category
         	port5000 = '5000'
+        	text = {'sentence':sentence,'term':category}
+        	r = requests.post("http://{}:{}/{}".format(address,port5000,endpoint), json=text)
+        	# print json.loads(r.text)['prediction']
+        	text['polarity'] = json.loads(r.text)['prediction']
+        	print text
+        	json_data = json.dumps(text)
         
         
-        
-		
         # port = '4000' #'Holo DyMemNN'
-        
-        
         # text = {'sentence':sentence,'term':target}
         # # text = [{'sentence':post_body,'term':'food'},{'sentence':post_body,'term':'food'}]
-
         # # print text
         # r = requests.post("http://{}:{}/{}".format(address,port,endpoint), json=text)
         # # print json.loads(r.text)['prediction']
         # text['polarity'] = json.loads(r.text)['prediction']
-
-		
-
         # json_data = json.dumps(text)
         # print json_data
 
