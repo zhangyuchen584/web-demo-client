@@ -1,29 +1,19 @@
-python query_original.py --dataset Restaurants --mode term --query "The food is normal" --term "food" --port 4000
-
-
-
-
-
-
-
-            // console.log(text[item].target)
-            // console.log(text[item].comment)
-
-            console.log(Object.keys(text[item])[0])
-            TarComPair = Object.keys(text[item])[0]+'.'+ text[item].target + '.comment. ' + text[item].comment
-            console.log(TarComPair)
-            
-            // console.log($scope.UniqueTargetList[item].target)
-            // console.log($scope.UniqueTargetList[item].comment)
-
-            // console.log($scope.UniqueTargetList[item].comment)
-            $http.post(destinationURL, {target: "suscipit", comment: "Facilisi facilisi nonummy lacus donec, dictumst pe…um et ornare massa per hac quis dis pellentesque."}, config).then($scope.test, $scope.errorOutput);
-            // $http.post(destinationURL, {target:$scope.UniqueTargetList[item].comment,comment:12}, config).then($scope.test, $scope.errorOutput);
-            // $http.post(destinationURL, {target:TarComPair}, config).then($scope.test, $scope.errorOutput);
-            // $http.post(destinationURL, 'hgfhgj', config).then($scope.test, $scope.errorOutput);
-            // $http.post(destinationURL, text[item], config).then($scope.test, $scope.errorOutput);
-        
-
+The food is good.
+the food is bad.
+The food is terrible.
+The food is expensive.
+The food is good.
+the food is bad.
+The food is terrible.
+The food is expensive.
+The food is good.
+the food is bad.
+The food is terrible.
+The food is expensive.
+The food is good.
+the food is bad.
+The food is terrible.
+The food is expensive.
 
 
 
