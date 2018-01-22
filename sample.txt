@@ -1,20 +1,12 @@
-The food is good.
-the food is bad.
-The food is terrible.
-The food is expensive.
-The food is good.
-the food is bad.
-The food is terrible.
-The food is expensive.
-The food is good.
-the food is bad.
-The food is terrible.
-The food is expensive.
-The food is good.
-the food is bad.
-The food is terrible.
-The food is expensive.
 
+
+
+python query_original.py --dataset Restaurants --mode aspect --query "Ive been to many Thai restaurants in Manhattan before, and Toons is by far the best Thai food Ive had (except for my mom's of course)." --term "food" --port 5000
+
+
+python query_original.py --dataset Restaurants --mode term --query "the food is good" --term "food" --port 5000
+
+python query_original.py --dataset Restaurants --mode aspect --query "the food is good" --term "food" --port 4000
 
 
 
